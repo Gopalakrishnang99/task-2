@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 public class UserItemProcessor implements ItemProcessor<User, User> {
+
     @Override
     public User process(User item) throws Exception {
         if (item.getLoggedInAt()
