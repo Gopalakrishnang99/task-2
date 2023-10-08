@@ -1,6 +1,6 @@
-DROP TABLE user_info;
+DROP TABLE IF EXISTS user_info;
 
-CREATE TABLE user_info (
+CREATE TABLE IF NOT EXISTS user_info (
     user_id BIGSERIAL,
     email VARCHAR(90),
     first_name VARCHAR(90),

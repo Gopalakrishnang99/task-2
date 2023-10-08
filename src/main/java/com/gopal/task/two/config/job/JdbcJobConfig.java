@@ -8,14 +8,12 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.database.builder.JdbcPagingItemReaderBuilder;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
-import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -27,7 +25,7 @@ public class JdbcJobConfig {
 
     @Bean
     public Job userStatusJob(JobRepository jobRepository) {
-        return new JobBuilder("customJob", jobRepository)
+        return new JobBuilder("userStatusUpdateJdbcJob", jobRepository)
                 .start(statusUpdateStep(null, null))
                 .build();
     }
@@ -67,7 +65,7 @@ public class JdbcJobConfig {
 
     @Bean
     public Step statusUpdateStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("step1", jobRepository)
+        return new StepBuilder("statusUpdateStep", jobRepository)
                 .<User,User>chunk(10,transactionManager)
                 .reader(userItemReader(null,null))
                 .writer(updateUserStatusWriter(null))

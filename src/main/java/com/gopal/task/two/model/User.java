@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.OffsetDateTime;
 
+/**
+ * Entity object representing a user
+ */
 @Data
 public class User {
 
