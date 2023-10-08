@@ -6,6 +6,6 @@ CREATE TABLE user_info (
     first_name VARCHAR(90),
     last_name VARCHAR(90),
     status VARCHAR(20),
-    loggedin_at TIMESTAMP,
+    logged_in_at TIMESTAMP,
     CONSTRAINT user_pk PRIMARY KEY(user_id)
 );

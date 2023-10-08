@@ -1,4 +1,4 @@
-INSERT INTO user_info (email, first_name, last_name, status, loggedin_at)
+INSERT INTO user_info (email, first_name, last_name, status, logged_in_at)
 VALUES
 ('abc@dummy.com','John 1','Doe','ACTIVE',now() AT TIME ZONE 'utc' - INTERVAL '1 hour'),
 ('def@dummy.com','John 2','Doe','ACTIVE',now() AT TIME ZONE 'utc' - INTERVAL '30 minutes'),
